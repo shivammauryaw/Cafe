@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cafe</string>
+    <string name="choose_your_nfavourite_coffee">Choose your\nFavourite Coffee</string>
+    <string name="the_best_grain_the_fineset_roast_nthe_powerfull_flavour">The best grain, the fineset roast\nthe powerfull flavour</string>
+    <string name="get_started">Get Started</string>
+    <string name="search">Search....</string>
+    <string name="category">Category</string>
+    <string name="popular_coffees">Popular Coffees</string>
+    <string name="see_all">See all</string>
+</resources>
