@@ -1,17 +1,19 @@
 package com.example.cafe.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.media.Rating
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.cafe.Activity.DetailActivity
 import com.example.cafe.Domain.ItemsModel
 import com.example.cafe.databinding.ViewholderItemPicLeftBinding
 import com.example.cafe.databinding.ViewholderItemPicRightBinding
 import kotlin.jvm.Throws
 
-class ItemsListCategoryAdapter(value items:MutableList<ItemsModel>)
+class ItemsListCategoryAdapter(val items:MutableList<ItemsModel>)
     :RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     companion object{
@@ -69,9 +71,37 @@ class ItemsListCategoryAdapter(value items:MutableList<ItemsModel>)
 
                     Glide.with(context)
                         .load(picUrl)
-                        .into(holder.binding.p)
+                        .into(holder.binding.picMain)
+
+                    holder.itemView.setOnClickListener {
+                        val intent=Intent(context,DetailActivity::class.java)
+                        intent.putExtra("object",items[position])
+                        context.startActivity(intent)
+                    }
+                }
+
+                is ViewholderItem2 -> {
+                    holder.binding.titleTxt.text=titleTxt
+                    holder.binding.priceTxt.text=priceTxt
+                    holder.binding.ratingBar.rating=rating
+
+                    Glide.with(context)
+                        .load(picUrl)
+                        .into(holder.binding.picMain)
+
+                    holder.itemView.setOnClickListener {
+                        val intent=Intent(context,DetailActivity::class.java)
+                        intent.putExtra("object",items[position])
+                        context.startActivity(intent)
+                    }
                 }
             }
         }
+        bindCommonData(
+            item.title,
+            "${item.price} USD",
+            item.rating.toFloat(),
+            item.picUrl[0]
+        )
     }
 }
