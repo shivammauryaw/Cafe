@@ -1,5 +1,6 @@
 package com.example.cafe.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.activity.enableEdgeToEdge
@@ -26,6 +27,13 @@ class MainActivity : AppCompatActivity() {
         initBanner()
         initcategory()
         initPopular()
+        initBottomMenu()
+    }
+
+    private fun initBottomMenu() {
+        binding.cartBtn.setOnClickListener {
+            startActivity(Intent(this,CartActivity::class.java))
+        }
     }
 
     private fun initBanner() {
